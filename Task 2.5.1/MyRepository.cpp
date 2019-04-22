@@ -118,6 +118,7 @@ void MyRepository::printer()
 	if (size == 0)
 	{
 		cout << "В репозитории еще нет ни одного пространства имён." << endl;
+		cout << endl;
 		return;
 	}
 	cout << "Доступные пространства имён" << endl;

@@ -50,12 +50,12 @@ void concrete_class_menu(MyClass *myClass)
 		case 1:
 			myClass->printFields();
 			break;
-
 		case 2:
 			myClass->printProperties();
 			break;
 		case 3:
 			myClass->printMethods();
+			break;
 		case 4:
 			cout << "Выберите имя поля для добавления в класс" << endl;
 			cin >> helper;

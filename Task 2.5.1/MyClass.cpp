@@ -52,7 +52,7 @@ void MyClass::add(MyMethod* myMethod)
 
 void MyClass::deleteField(string name)
 {
-	int position = findPropertyIndexByName(name);
+	int position = findFieldIndexByName(name);
 
 	if (position != -1)
 	{
