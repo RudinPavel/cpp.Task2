@@ -20,7 +20,7 @@ public:
 	bool exist(string name); // проверить существование класса в пространстве имен
 
 	void printer(); // напечатать список классов
-	void change(string name); // изменить класс
+	void change(string name, MyClass* m); // изменить класс
 
 	string get_name(); // получить имя пространства имен
 	void set_name(string name);  // установить имя пространства имен

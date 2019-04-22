@@ -15,3 +15,7 @@ string MyProperty::get_name()
 {
 	return name;
 }
+
+void MyProperty::set_name(string name)
+{
+}

@@ -15,3 +15,7 @@ string MyMethod::get_name()
 {
 	return name;
 }
+
+void MyMethod::set_name(string name)
+{
+}

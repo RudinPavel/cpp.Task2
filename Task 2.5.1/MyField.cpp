@@ -15,3 +15,7 @@ string MyField::get_name()
 {
 	return name;
 }
+
+void MyField::set_name(string name)
+{
+}

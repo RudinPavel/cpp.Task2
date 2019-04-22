@@ -8,6 +8,7 @@ public:
 	MyMethod(string name);
 	~MyMethod();
 	string get_name();
+	void set_name(string name);
 private:
 	string name;
 };

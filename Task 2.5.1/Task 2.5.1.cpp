@@ -210,7 +210,7 @@ void concrete_namespace_menu(MyNamespace *myNamespace)
 				cin >> current;
 				if (myNamespace->exist(current))
 				{
-					//myClass->change(current);
+					myNamespace->change(current, myClass);
 					cout << "Успешно изменили класс" << endl;
 				}
 			}

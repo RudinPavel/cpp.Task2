@@ -12,7 +12,7 @@ MyNamespace::MyNamespace(string name)
 	if (MyUtils::check_valid_name(name))
 	{
 		this->name = name;
-		cout << "Успешно создан репозиторий с именем " << name << endl;
+		cout << "Успешно создано пространство имен с именем " << name << endl;
 	}
 }
 
@@ -120,11 +120,11 @@ void MyNamespace::printer()
 	cout << result << endl;
 }
 
-void MyNamespace::change(string name)
+void MyNamespace::change(string name, MyClass* m)
 {
 	if (exist(name))
 		return;
-	this->name = name;
+	m->set_name(name);
 	cout << "Успешно присвоили новое имя" << endl;
 }
 
