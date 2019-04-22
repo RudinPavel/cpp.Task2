@@ -6,111 +6,9 @@
 #include "MyField.h"
 #include "MyProperty.h"
 #include "MyMethod.h"
+#include "MyUtils.h"
 
 using namespace std;
-
-/*
-class MyClass1 : Container
-{
-public:
-	string name = "";
-
-	vector<MyField*> fields;
-	vector<MyProperty*> properties;
-	vector<MyMethod*> methods;
-
-	void add() override {}
-	bool check() override { return true; }
-	void remove() override {}
-	void update() override {}
-
-	MyClass(string name)
-	{
-		this->name = name;
-	}
-
-	void add(MyField* m)
-	{
-		if (checkExistance(m) && (check_name(m->name)))
-		{
-			fields.push_back(m);
-			cout << "ѕоле " << m->name << " было успешно добавлено в класс " << name << endl;
-			cout << endl;
-		}
-	}
-
-	void add(MyProperty* m)
-	{
-		if (checkExistance(m) && (check_name(m->name)))
-		{
-			properties.push_back(m);
-			cout << "—войство " << m->name << " был успешно добавлено в класс " << name << endl;
-			cout << endl;
-		}
-	}
-
-	void add(MyMethod* m) // принимает в себ€ указатель на экземпл€р класса MyClass
-	{
-		if (checkExistance(m) && (check_name(m->name)))
-		{
-			methods.push_back(m);
-			cout << "ћетод " << m->name << " был успешно добавлен в класс " << name << endl;
-			cout << endl;
-		}
-	}
-
-	bool checkExistance(MyField* m)
-	{
-		int size = static_cast<int>(fields.size()); // почему нельз€ просто size()
-		for (int i = 0; i < size; i++)
-		{
-			if (fields[i]->name == m->name)
-			{
-				cout << "ѕоле " << m->name << " уже определено в классе " << name << endl;
-				cout << endl;
-				return false;
-			}
-		}
-		return true;
-	}
-
-	bool checkExistance(MyProperty* m)
-	{
-		int size = static_cast<int>(properties.size()); // почему нельз€ просто size()
-		for (int i = 0; i < size; i++)
-		{
-			if (properties[i]->name == m->name)
-			{
-				cout << "—войство " << m->name << " уже определено в классе " << name << endl;
-				cout << endl;
-				return false;
-			}
-		}
-		return true;
-	}
-
-	bool checkExistance(MyMethod* m)
-	{
-		int size = static_cast<int>(methods.size()); // почему нельз€ просто size()
-		for (int i = 0; i < size; i++)
-		{
-			if (methods[i]->name == m->name)
-			{
-				cout << "ћетод " << m->name << " уже определен в классе " << name << endl;
-				cout << endl;
-				return false;
-			}
-		}
-		return true;
-	}
-
-	void printer()
-	{
-		cout << "ѕол€, свойства и методы " << endl;
-	}
-};
-*/
-
 
 MyClass::MyClass(string name)
 {
@@ -122,87 +20,246 @@ MyClass::~MyClass()
 	cout << "”спешно удалили класс" << endl;
 }
 
-void MyClass::add(MyField* myClass)
+void MyClass::add(MyField* myField)
 {
+	if (!existField(myField->get_name()) && MyUtils::check_valid_name(myField->get_name()))
+	{
+		myFields.push_back(myField);
+		cout << "ѕоле " << myField->get_name() << " было успешно добавлено в класс " << name << endl;
+		cout << endl;
+	}
 }
 
 void MyClass::add(MyProperty* myProperty)
 {
+	if (!existField(myProperty->get_name()) && MyUtils::check_valid_name(myProperty->get_name()))
+	{
+		myProperties.push_back(myProperty);
+		cout << "—войство " << myProperty->get_name() << " было успешно добавлено в класс " << name << endl;
+		cout << endl;
+	}
 }
 
 void MyClass::add(MyMethod* myMethod)
 {
+	if (!existField(myMethod->get_name()) && MyUtils::check_valid_name(myMethod->get_name()))
+	{
+		myMethods.push_back(myMethod);
+		cout << "ћетод " << myMethod->get_name() << " был успешно добавлен в класс " << name << endl;
+		cout << endl;
+	}
 }
 
 void MyClass::deleteField(string name)
 {
+	int position = findPropertyIndexByName(name);
+
+	if (position != -1)
+	{
+		MyField* n = findFieldByName(name);
+		this->myFields.erase(this->myFields.begin() + position);
+		delete n;
+		cout << "”далили поле с именем " << name << endl;
+		return;
+	}
+	cout << "Ќе удалось удалить поле с именем " << name << endl;
 }
 
 void MyClass::deleteProperty(string name)
 {
+	int position = findPropertyIndexByName(name);
+
+	if (position != -1)
+	{
+		MyProperty* n = findPropertyByName(name);
+		this->myProperties.erase(this->myProperties.begin() + position);
+		delete n;
+		cout << "”далили свойство с именем " << name << endl;
+		return;
+	}
+	cout << "Ќе удалось удалить свойство с именем " << name << endl;
 }
 
 void MyClass::deleteMethod(string name)
 {
+	int position = findMethodIndexByName(name);
+
+	if (position != -1)
+	{
+		MyMethod* n = findMethodByName(name);
+		this->myMethods.erase(this->myMethods.begin() + position);
+		delete n;
+		cout << "”далили метод с именем " << name << endl;
+		return;
+	}
+	cout << "Ќе удалось удалить метод с именем " << name << endl;
 }
 
 int MyClass::findFieldIndexByName(string name)
 {
-	return 0;
+	int size = static_cast<int>(myFields.size());
+	for (int i = 0; i < size; i++)
+	{
+		if (myFields[i]->get_name() == name)
+		{
+			return i;
+		}
+	}
+	return -1;
 }
 
 MyField* MyClass::findFieldByName(string name)
 {
-	return nullptr;
+	int size = static_cast<int>(myFields.size());
+	for (int i = 0; i < size; i++)
+	{
+		if (myFields[i]->get_name() == name)
+		{
+			return myFields[i];
+		}
+	}
+	return NULL;
 }
 
 int MyClass::findPropertyIndexByName(string name)
 {
-	return 0;
+	int size = static_cast<int>(myProperties.size());
+	for (int i = 0; i < size; i++)
+	{
+		if (myProperties[i]->get_name() == name)
+		{
+			return i;
+		}
+	}
+	return -1;
 }
 
 MyProperty* MyClass::findPropertyByName(string name)
 {
-	return nullptr;
+	int size = static_cast<int>(myProperties.size());
+	for (int i = 0; i < size; i++)
+	{
+		if (myProperties[i]->get_name() == name)
+		{
+			return myProperties[i];
+		}
+	}
+	return NULL;
 }
 
 int MyClass::findMethodIndexByName(string name)
 {
-	return 0;
+	int size = static_cast<int>(myMethods.size());
+	for (int i = 0; i < size; i++)
+	{
+		if (myMethods[i]->get_name() == name)
+		{
+			return i;
+		}
+	}
+	return -1;
 }
 
 MyMethod* MyClass::findMethodByName(string name)
 {
-	return nullptr;
+	int size = static_cast<int>(myMethods.size());
+	for (int i = 0; i < size; i++)
+	{
+		if (myMethods[i]->get_name() == name)
+		{
+			return myMethods[i];
+		}
+	}
+	return NULL;
 }
 
 bool MyClass::existField(MyField* m)
 {
+	int size = static_cast<int>(myFields.size()); // почему нельз€ просто size()
+	for (int i = 0; i < size; i++)
+	{
+		if (myFields[i]->get_name() == m->get_name())
+		{
+			cout << "ѕоле " << name << " уже определено в классе " << this->name << endl;
+			cout << endl;
+			return true;
+		}
+	}
 	return false;
 }
 
 bool MyClass::existField(string name)
 {
+	int size = static_cast<int>(myFields.size()); // почему нельз€ просто size()
+	for (int i = 0; i < size; i++)
+	{
+		if (myFields[i]->get_name() == name)
+		{
+			cout << "ѕоле " << name << " уже определено в классе " << this->name << endl;
+			cout << endl;
+			return true;
+		}
+	}
 	return false;
 }
 
 bool MyClass::existProperty(MyProperty* m)
 {
+	int size = static_cast<int>(myProperties.size()); // почему нельз€ просто size()
+	for (int i = 0; i < size; i++)
+	{
+		if (myProperties[i]->get_name() == m->get_name())
+		{
+			cout << "—войство " << name << " уже определено в классе " << this->name << endl;
+			cout << endl;
+			return true;
+		}
+	}
 	return false;
 }
 
 bool MyClass::existProperty(string name)
 {
+	int size = static_cast<int>(myProperties.size()); // почему нельз€ просто size()
+	for (int i = 0; i < size; i++)
+	{
+		if (myProperties[i]->get_name() == name)
+		{
+			cout << "—войство " << name << " уже определено в классе " << this->name << endl;
+			cout << endl;
+			return true;
+		}
+	}
 	return false;
 }
 
 bool MyClass::existMethod(MyMethod* m)
 {
+	int size = static_cast<int>(myMethods.size()); // почему нельз€ просто size()
+	for (int i = 0; i < size; i++)
+	{
+		if (myMethods[i]->get_name() == m->get_name())
+		{
+			cout << "ћетод " << name << " уже определен в классе " << this->name << endl;
+			cout << endl;
+			return true;
+		}
+	}
 	return false;
 }
 
 bool MyClass::existMethod(string name)
 {
+	int size = static_cast<int>(myMethods.size()); // почему нельз€ просто size()
+	for (int i = 0; i < size; i++)
+	{
+		if (myMethods[i]->get_name() == name)
+		{
+			cout << "ћетод " << name << " уже определен в классе " << this->name << endl;
+			cout << endl;
+			return true;
+		}
+	}
 	return false;
 }
 
@@ -260,16 +317,28 @@ void MyClass::printMethods()
 	cout << result << endl;
 }
 
-void MyClass::changeField(string name)
+void MyClass::changeField(string name, MyField* m)
 {
+	if (existField(name))
+		return;
+	m->set_name(name);
+	cout << "”спешно присвоили новое им€ полю" << endl;
 }
 
-void MyClass::changeProperty(string name)
+void MyClass::changeProperty(string name, MyProperty* m)
 {
+	if (existProperty(name))
+		return;
+	m->set_name(name);
+	cout << "”спешно присвоили новое им€ свойству" << endl;
 }
 
-void MyClass::changeMethod(string name)
+void MyClass::changeMethod(string name, MyMethod* m)
 {
+	if (existMethod(name))
+		return;
+	m->set_name(name);
+	cout << "”спешно присвоили новое им€ методу" << endl;
 }
 
 string MyClass::get_name()

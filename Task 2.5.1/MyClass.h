@@ -42,9 +42,9 @@ public:
 	void printProperties(); // напечатать список свойств
 	void printMethods(); // напечатать список методов
 
-	void changeField(string name); // напечатать список полей
-	void changeProperty(string name); // напечатать список свойств
-	void changeMethod(string name); // напечатать список методов
+	void changeField(string name, MyField* m); // напечатать список полей
+	void changeProperty(string name, MyProperty* m); // напечатать список свойств
+	void changeMethod(string name, MyMethod* m); // напечатать список методов
 
 	string get_name(); // получить имя пространства имен
 	void set_name(string name);  // установить имя пространства имен

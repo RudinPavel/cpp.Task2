@@ -85,7 +85,7 @@ void concrete_class_menu(MyClass *myClass)
 				cin >> current;
 				if (myClass->existField(current))
 				{
-					myClass->changeField(current);
+					myClass->changeField(current, myField);
 					cout << "Успешно изменили поле класса" << endl;
 				}
 			}
@@ -102,7 +102,7 @@ void concrete_class_menu(MyClass *myClass)
 				cin >> current;
 				if (myClass->existProperty(current))
 				{
-					myClass->changeProperty(current);
+					myClass->changeProperty(current, myProperty);
 					cout << "Успешно изменили свойство класса" << endl;
 				}
 			}
@@ -119,7 +119,7 @@ void concrete_class_menu(MyClass *myClass)
 				cin >> current;
 				if (myClass->existMethod(current))
 				{
-					myClass->changeMethod(current);
+					myClass->changeMethod(current, myMethod);
 					cout << "Успешно изменили метод класса" << endl;
 				}
 			}
