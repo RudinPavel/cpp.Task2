@@ -1,8 +1,10 @@
 #include "MyProperty.h"
 #include <string>
+using namespace std;
 
 MyProperty::MyProperty(string name)
 {
+	this->name = name;
 }
 
 MyProperty::~MyProperty()
@@ -11,5 +13,5 @@ MyProperty::~MyProperty()
 
 string MyProperty::get_name()
 {
-	return string();
+	return name;
 }

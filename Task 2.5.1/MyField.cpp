@@ -1,23 +1,17 @@
 #include "MyField.h"
-/*
-class MyField1
+#include <string>
+using namespace std;
+
+MyField::MyField(string name)
 {
-public:
-	string name = "";
-
-	MyField(string name)
-	{
-		this->name = name;
-	}
-};
-
-MyField::MyField()
-{
-
+	this->name = name;
 }
-
 
 MyField::~MyField()
 {
 }
-*/
+
+string MyField::get_name()
+{
+	return name;
+}
