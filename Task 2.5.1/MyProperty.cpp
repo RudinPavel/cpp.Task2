@@ -1,22 +1,15 @@
 #include "MyProperty.h"
-/*
-class MyProperty1
-{
-public:
-	string name = "";
+#include <string>
 
-	MyProperty(string name)
-	{
-		this->name = name;
-	}
-};
-
-MyProperty::MyProperty()
+MyProperty::MyProperty(string name)
 {
 }
-
 
 MyProperty::~MyProperty()
 {
 }
-*/
+
+string MyProperty::get_name()
+{
+	return string();
+}

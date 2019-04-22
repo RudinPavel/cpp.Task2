@@ -38,9 +38,9 @@ void concrete_class_menu(MyClass *myClass)
 	string current;
 	bool answer = true;
 	string helper = "";
-	//MyField *myField;
-	//MyProperty *myProperty;
-	//MyMethod *myMethod;
+	MyField *myField;
+	MyProperty *myProperty;
+	MyMethod *myMethod;
 
 	while (answer)
 	{
@@ -66,36 +66,101 @@ void concrete_class_menu(MyClass *myClass)
 		switch (x)
 		{
 		case 1:
-			//myClass->printer();
+			myClass->printFields();
 			break;
 
 		case 2:
-		/*case 2:
-			myClass->printer();
-			cout << "Выберите имя класса, в который хотите войти" << endl;
-			cin >> current;
-
-
-			cout << "-------------Вошли в класс --------------" << endl;
+			myClass->printProperties();
 			break;
 		case 3:
-			cout << "Выберите имя класса для добавления в пространство имён" << endl;
-			cin >> helper;
-			myClass = new MyClass(helper);
-			myNamespace->add(myClass);
-			break;
+			myClass->printMethods();
 		case 4:
-			myNamespace->printer();
-			cout << "Выберите имя класса для изменения" << endl;
-			cin >> current;
-			cout << "-------------Изменили класс --------------" << endl;
+			cout << "Выберите имя поля для добавления в класс" << endl;
+			cin >> helper;
+			myField = new MyField(helper);
+			myClass->add(myField);
 			break;
 		case 5:
-			myNamespace->printer();
-			cout << "Выберите имя класса для удаления из пространства имён" << endl;
+			cout << "Выберите имя свойства для добавления в класс" << endl;
+			cin >> helper;
+			myProperty = new MyProperty(helper);
+			myClass->add(myProperty);
+			break;
+		case 6:
+			cout << "Выберите имя метода для добавления в класс" << endl;
+			cin >> helper;
+			myMethod = new MyMethod(helper);
+			myClass->add(myMethod);
+			break;
+		case 7:
+			myClass->printFields();
+			cout << "Выберите имя поля для изменения" << endl;
 			cin >> current;
-			myNamespace->deleteClass(current);
-			break;*/
+			myField = myClass->findFieldByName(current);
+			if (myField != NULL)
+			{
+				cout << "Введите новое имя для поля" << endl;
+				cin >> current;
+				if (myClass->existField(current))
+				{
+					myClass->changeField(current);
+					cout << "Успешно изменили поле класса" << endl;
+				}
+			}
+			else cout << "Не удалось изменить поле класса" << endl;
+			break;
+		case 8:
+			myClass->printProperties();
+			cout << "Выберите имя свойства для изменения" << endl;
+			cin >> current;
+			myProperty = myClass->findPropertyByName(current);
+			if (myProperty != NULL)
+			{
+				cout << "Введите новое имя свойства" << endl;
+				cin >> current;
+				if (myClass->existProperty(current))
+				{
+					myClass->changeProperty(current);
+					cout << "Успешно изменили свойство класса" << endl;
+				}
+			}
+			else cout << "Не удалось изменить свойство" << endl;
+			break;
+		case 9:
+			myClass->printMethods();
+			cout << "Выберите имя метода для изменения" << endl;
+			cin >> current;
+			myMethod = myClass->findMethodByName(current);
+			if (myMethod != NULL)
+			{
+				cout << "Введите новое имя метода" << endl;
+				cin >> current;
+				if (myClass->existMethod(current))
+				{
+					myClass->changeMethod(current);
+					cout << "Успешно изменили метод класса" << endl;
+				}
+			}
+			else cout << "Не удалось изменить метод класса" << endl;
+			break;
+		case 10:
+			myClass->printFields();
+			cout << "Выберите имя поля для удаления из класса" << endl;
+			cin >> current;
+			myClass->deleteField(current);
+			break;
+		case 11:
+			myClass->printProperties();
+			cout << "Выберите имя свойства для удаления из класса" << endl;
+			cin >> current;
+			myClass->deleteProperty(current);
+			break;
+		case 12:
+			myClass->printMethods();
+			cout << "Выберите имя метода для для удаления из класса" << endl;
+			cin >> current;
+			myClass->deleteMethod(current);
+			break;
 		case 0:
 			answer = false;
 			break;

@@ -1,5 +1,13 @@
 #include "MyClass.h"
 
+#include <vector>
+#include <string>
+#include <iostream>
+#include "MyField.h"
+#include "MyProperty.h"
+#include "MyMethod.h"
+
+using namespace std;
 
 /*
 class MyClass1 : Container
@@ -106,10 +114,12 @@ public:
 
 MyClass::MyClass(string name)
 {
+	this->name = name;
 }
 
 MyClass::~MyClass()
 {
+	cout << "Успешно удалили класс" << endl;
 }
 
 void MyClass::add(MyField* myClass)
@@ -141,7 +151,7 @@ int MyClass::findFieldIndexByName(string name)
 	return 0;
 }
 
-MyField* MyClass::findClassByName(string name)
+MyField* MyClass::findFieldByName(string name)
 {
 	return nullptr;
 }
@@ -208,23 +218,24 @@ void MyClass::printMethods()
 {
 }
 
-void MyClass::changeField()
+void MyClass::changeField(string name)
 {
 }
 
-void MyClass::changeProperty()
+void MyClass::changeProperty(string name)
 {
 }
 
-void MyClass::changeMethod()
+void MyClass::changeMethod(string name)
 {
 }
 
 string MyClass::get_name()
 {
-	return string();
+	return name;
 }
 
 void MyClass::set_name(string name)
 {
+	this->name = name;
 }

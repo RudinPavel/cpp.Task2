@@ -1,22 +1,12 @@
 #include "MyMethod.h"
-/*
-class MyMethod1
-{
-public:
-	string name = "";
-
-	MyMethod(string name)
-	{
-		this->name = name;
-	}
-};
-
-MyMethod::MyMethod()
-{
-}
-
+#include <string>
+using namespace std;
 
 MyMethod::~MyMethod()
 {
 }
-*/
+
+string MyMethod::get_name()
+{
+	return string();
+}

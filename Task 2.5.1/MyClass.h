@@ -21,7 +21,7 @@ public:
 	void deleteMethod(string name); // удалить метод
 
 	int findFieldIndexByName(string name);
-	MyField* findClassByName(string name);
+	MyField* findFieldByName(string name);
 
 	int findPropertyIndexByName(string name);
 	MyProperty* findPropertyByName(string name);
@@ -42,9 +42,9 @@ public:
 	void printProperties(); // напечатать список свойств
 	void printMethods(); // напечатать список методов
 
-	void changeField(); // напечатать список полей
-	void changeProperty(); // напечатать список свойств
-	void changeMethod(); // напечатать список методов
+	void changeField(string name); // напечатать список полей
+	void changeProperty(string name); // напечатать список свойств
+	void changeMethod(string name); // напечатать список методов
 
 	string get_name(); // получить имя пространства имен
 	void set_name(string name);  // установить имя пространства имен

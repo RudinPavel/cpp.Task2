@@ -1,2 +1,11 @@
-﻿  Task 2.5.1.cpp
-  Task 2.5.1.vcxproj -> E:\Программирование\6 семестр Язык C++\Task 2\Debug\Task 2.5.1.exe
+﻿  MyClass.cpp
+  MyNamespace.cpp
+E:\Программирование\6 семестр Язык C++\Task 2\Task 2.5.1\MyUtils.h(12): warning C4091: static : пропускается слева от "MyUtils", когда ни одна переменная не объявлена
+  MyProperty.cpp
+  MyRepository.cpp
+E:\Программирование\6 семестр Язык C++\Task 2\Task 2.5.1\MyUtils.h(12): warning C4091: static : пропускается слева от "MyUtils", когда ни одна переменная не объявлена
+  Task 2.5.1.cpp
+  Создание кода...
+Task 2.5.1.obj : error LNK2019: ёё√ыър эр эхЁрчЁх°хээ√щ тэх°эшщ ёшьтюы "public: __thiscall MyField::MyField(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (??0MyField@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) т ЇєэъЎшш "void __cdecl concrete_class_menu(class MyClass *)" (?concrete_class_menu@@YAXPAVMyClass@@@Z)
+Task 2.5.1.obj : error LNK2019: ёё√ыър эр эхЁрчЁх°хээ√щ тэх°эшщ ёшьтюы "public: __thiscall MyMethod::MyMethod(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (??0MyMethod@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) т ЇєэъЎшш "void __cdecl concrete_class_menu(class MyClass *)" (?concrete_class_menu@@YAXPAVMyClass@@@Z)
+E:\╧ЁюуЁрььшЁютрэшх\6 ёхьхёЄЁ ▀ч√ъ C++\Task 2\Debug\Task 2.5.1.exe : fatal error LNK1120: эхЁрчЁх°хээ√ї тэх°эшї ¤ыхьхэЄют: 2

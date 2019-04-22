@@ -1,9 +1,12 @@
 #include "MyRepository.h"
-#include "MyNamespace.h"
+
 #include <string>
 #include <iostream>
+#include "MyNamespace.h"
 #include "MyUtils.h"
+
 using namespace std;
+
 
 MyRepository::MyRepository(string name)
 {

@@ -1,8 +1,10 @@
 #include "MyNamespace.h"
-#include "MyUtils.h"
+
 #include <string>
 #include <vector>
 #include <iostream>
+#include "MyUtils.h"
+
 using namespace std;
 
 MyNamespace::MyNamespace(string name)
