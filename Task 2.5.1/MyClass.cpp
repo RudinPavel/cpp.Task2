@@ -208,14 +208,56 @@ bool MyClass::existMethod(string name)
 
 void MyClass::printFields()
 {
+	string result;
+	int size = static_cast<int>(myFields.size()); // почему нельзя просто size()
+	if (size == 0)
+	{
+		cout << "В классе еще нет ни одного поля." << endl;
+		return;
+	}
+	cout << "Доступные поля" << endl;
+	for (int i = 0; i < size; i++)
+	{
+		result += to_string(i + 1) + ". ";
+		result += myFields[i]->get_name() + "\n\r";
+	}
+	cout << result << endl;
 }
 
 void MyClass::printProperties()
 {
+	string result;
+	int size = static_cast<int>(myProperties.size()); // почему нельзя просто size()
+	if (size == 0)
+	{
+		cout << "В классе еще нет ни одного свойства." << endl;
+		return;
+	}
+	cout << "Доступные свойства" << endl;
+	for (int i = 0; i < size; i++)
+	{
+		result += to_string(i + 1) + ". ";
+		result += myProperties[i]->get_name() + "\n\r";
+	}
+	cout << result << endl;
 }
 
 void MyClass::printMethods()
 {
+	string result;
+	int size = static_cast<int>(myMethods.size()); // почему нельзя просто size()
+	if (size == 0)
+	{
+		cout << "В классе еще нет ни одного метода." << endl;
+		return;
+	}
+	cout << "Доступные методы" << endl;
+	for (int i = 0; i < size; i++)
+	{
+		result += to_string(i + 1) + ". ";
+		result += myMethods[i]->get_name() + "\n\r";
+	}
+	cout << result << endl;
 }
 
 void MyClass::changeField(string name)

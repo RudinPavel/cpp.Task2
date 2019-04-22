@@ -20,7 +20,7 @@ public:
 	bool exist(string name); // проверить существование имени пространства имен в репозитории
 
 	void printer(); // напечатать список пространств имён
-	void change(string name); // изменить пространство имён
+	void change(string name, MyNamespace* m); // изменить пространство имён
 
 	string get_name(); // получить имя репозитория
 	void set_name(string name);  // установить имя репозитория

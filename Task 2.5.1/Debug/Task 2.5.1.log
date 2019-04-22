@@ -1,10 +1,3 @@
-﻿  MyClass.cpp
-  MyField.cpp
-  MyNamespace.cpp
+﻿  MyRepository.cpp
 E:\Программирование\6 семестр Язык C++\Task 2\Task 2.5.1\MyUtils.h(12): warning C4091: static : пропускается слева от "MyUtils", когда ни одна переменная не объявлена
-  MyProperty.cpp
-  MyRepository.cpp
-E:\Программирование\6 семестр Язык C++\Task 2\Task 2.5.1\MyUtils.h(12): warning C4091: static : пропускается слева от "MyUtils", когда ни одна переменная не объявлена
-  Task 2.5.1.cpp
-  Создание кода...
   Task 2.5.1.vcxproj -> E:\Программирование\6 семестр Язык C++\Task 2\Debug\Task 2.5.1.exe

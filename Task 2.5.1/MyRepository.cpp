@@ -91,11 +91,11 @@ bool MyRepository::exist(MyNamespace* m)  // перегрузка функции
 	return false;
 }
 
-void MyRepository::change(string name)
+void MyRepository::change(string name, MyNamespace* m)
 {
 	if (exist(name))
 		return;
-	this->name = name;
+	m->set_name(name);
 	cout << "Успешно присвоили новое имя" << endl;
 }
 
