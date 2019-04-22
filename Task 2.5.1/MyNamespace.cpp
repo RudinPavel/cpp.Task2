@@ -1,18 +1,151 @@
 #include "MyNamespace.h"
-
+#include "MyUtils.h"
 #include <string>
+#include <vector>
+#include <iostream>
 using namespace std;
 
+MyNamespace::MyNamespace(string name)
+{
+	if (MyUtils::check_valid_name(name))
+	{
+		this->name = name;
+		cout << "Успешно создан репозиторий с именем " << name << endl;
+	}
+}
+
+MyNamespace::~MyNamespace()
+{
+	cout << "Успешно удалили пространство имён" << endl;
+}
+
+void MyNamespace::add(MyClass* myClass)
+{
+	if (!exist(myClass->get_name()) && MyUtils::check_valid_name(myClass->get_name()))
+	{
+		myClasses.push_back(myClass);
+		cout << "Класс " << myClass->get_name() << " было успешно добавлен в пространство имен " << name << endl;
+		cout << endl;
+	}
+}
+
+void MyNamespace::deleteClass(string name)
+{
+	int position = findIndexByName(name);
+
+	if (position != -1)
+	{
+		MyClass* n = findClassByName(name);
+		this->myClasses.erase(this->myClasses.begin() + position);
+		delete n;
+		cout << "Удалили класс с именем " << name << endl;
+		return;
+	}
+	cout << "Не удалось удалить класс с именем " << name << endl;
+}
+
+int MyNamespace::findIndexByName(string name)
+{
+	int size = static_cast<int>(myClasses.size());
+	for (int i = 0; i < size; i++)
+	{
+		if (myClasses[i]->get_name() == name)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+MyClass* MyNamespace::findClassByName(string name)
+{
+	int size = static_cast<int>(myClasses.size());
+	for (int i = 0; i < size; i++)
+	{
+		if (myClasses[i]->get_name() == name)
+		{
+			return myClasses[i];
+		}
+	}
+	return NULL;
+}
+
+bool MyNamespace::exist(MyClass* m)
+{
+	int size = static_cast<int>(myClasses.size()); // почему нельзя просто size()
+	for (int i = 0; i < size; i++)
+	{
+		if (myClasses[i]->get_name() == m->get_name())
+		{
+			cout << "Класс " << m->get_name() << " уже определен в пространстве имён " << name << endl;
+			cout << endl;
+			return true;
+		}
+	}
+	return false;
+}
+
+bool MyNamespace::exist(string name)
+{
+	int size = static_cast<int>(myClasses.size()); // почему нельзя просто size()
+	for (int i = 0; i < size; i++)
+	{
+		if (myClasses[i]->get_name() == name)
+		{
+			cout << "Класс " << name << " уже определен в пространстве имён " << this->name << endl;
+			cout << endl;
+			return true;
+		}
+	}
+	return false;
+}
+
+void MyNamespace::printer()
+{
+	string result;
+	int size = static_cast<int>(myClasses.size()); // почему нельзя просто size()
+	if (size == 0)
+	{
+		cout << "В пространстве имен нет ни одного класса." << endl;
+		return;
+	}
+	cout << "Доступные классы" << endl;
+	for (int i = 0; i < size; i++)
+	{
+		result += to_string(i + 1) + ". ";
+		result += myClasses[i]->get_name() + "\n\r";
+	}
+	cout << result << endl;
+}
+
+void MyNamespace::change(string name)
+{
+	if (exist(name))
+		return;
+	this->name = name;
+	cout << "Успешно присвоили новое имя" << endl;
+}
+
+string MyNamespace::get_name()
+{
+	return name;
+}
+
+void MyNamespace::set_name(string name)
+{
+	this->name = name;
+}
+
+
+
+
+
+/*
 class MyNamespace1 //: Container
 {
 public:
 	string name = "";
 	vector<MyClass*> classes;
-
-	MyNamespace(string name)
-	{
-		this->name = name;  // -> это сокращение *.
-	}
 
 	void add(MyClass* m) // принимает в себя указатель на экземпляр класса MyClass
 	{
@@ -116,12 +249,4 @@ public:
 	}
 
 };
-
-MyNamespace::MyNamespace()
-{
-}
-
-
-MyNamespace::~MyNamespace()
-{
-}
+*/

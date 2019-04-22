@@ -1,5 +1,5 @@
 #include "MyProperty.h"
-
+/*
 class MyProperty1
 {
 public:
@@ -19,3 +19,4 @@ MyProperty::MyProperty()
 MyProperty::~MyProperty()
 {
 }
+*/

@@ -14,7 +14,7 @@
 
 using namespace std;
 
-//bool check_name(string name); // Пример форвардной декларации
+//bool check_valid_name(string name); // Пример форвардной декларации
 
 /*
 5. Иерархия классов. Необходимо создать классы для описания элементов языка C#:
@@ -31,30 +31,6 @@ using namespace std;
 */
 
 
-bool check_valid_name(string name) 
-{
-	int i = 0;
-
-	int size = static_cast<int>(name.size());
-	if (size == 0)
-	{
-		cout << "Недопустимо добавить сущность. Имя сущности не может быть пустым." << endl;
-		cout << endl;
-		return false;
-	}
-
-	while (name[i]) 
-	{
-		if (name[i] == ' ')
-		{
-			cout << "Недопустимо добавить сущность. Имя сущности содержит пробелы." << endl;
-			cout << endl;
-			return false;
-		}
-		i++;
-	}
-	return true;
-}
 
 void concrete_class_menu(MyClass *myClass)
 {
@@ -62,14 +38,14 @@ void concrete_class_menu(MyClass *myClass)
 	string current;
 	bool answer = true;
 	string helper = "";
-	MyField *myField;
-	MyProperty *myProperty;
-	MyMethod *myMethod;
+	//MyField *myField;
+	//MyProperty *myProperty;
+	//MyMethod *myMethod;
 
 	while (answer)
 	{
 		cout << endl;
-		cout << "Класс " << myClass->name << endl;
+		cout << "Класс " << myClass->get_name() << endl;
 		cout << "1. Посмотреть список полей" << endl;
 		cout << "2. Посмотреть список свойств" << endl;
 		cout << "3. Посмотреть список методов" << endl;
@@ -90,8 +66,10 @@ void concrete_class_menu(MyClass *myClass)
 		switch (x)
 		{
 		case 1:
-			myClass->printer();
+			//myClass->printer();
 			break;
+
+		case 2:
 		/*case 2:
 			myClass->printer();
 			cout << "Выберите имя класса, в который хотите войти" << endl;
@@ -140,11 +118,11 @@ void concrete_namespace_menu(MyNamespace *myNamespace)
 	while (answer)
 	{
 		cout << endl;
-		cout << "Пространство имён " << myNamespace->name << endl;
+		cout << "Пространство имён " << myNamespace->get_name() << endl;
 		cout << "1. Посмотреть список классов" << endl;
 		cout << "2. Перейти в класс" << endl;
 		cout << "3. Создать класс" << endl;
-		cout << "//4. Изменить класс" << endl;
+		cout << "4. Изменить класс" << endl;
 		cout << "5. Удалить класс" << endl;
 		cout << "0. Вернуться в меню пространств имён" << endl;
 		cout << endl;
@@ -179,17 +157,17 @@ void concrete_namespace_menu(MyNamespace *myNamespace)
 			cout << "Выберите имя класса для изменения" << endl;
 			cin >> current;
 			myClass = myNamespace->findClassByName(current);
-			if (myNamespace != NULL)
+			if (myClass != NULL)
 			{
 				cout << "Введите новое имя для класса" << endl;
 				cin >> current;
 				if (myNamespace->exist(current))
 				{
-					myClass->name = current;
+					//myClass->change(current);
 					cout << "Успешно изменили класс" << endl;
 				}
 			}
-			else cout << "Не удалось изменить имя пространства имён" << endl;
+			else cout << "Не удалось изменить имя класса" << endl;
 			break;
 		case 5:
 			myNamespace->printer();
@@ -217,7 +195,7 @@ void namespaces_menu(MyRepository *myRepository)
 
 	while (answer)
 	{
-		cout << "Пространства имён репозитория " << myRepository->name << endl;
+		cout << "Пространства имён репозитория " << myRepository->get_name() << endl;
 		cout << "1. Посмотреть пространства имён" << endl;
 		cout << "2. Перейти в пространство имён" << endl;
 		cout << "3. Создать пространство имён" << endl;
@@ -288,7 +266,7 @@ void main_menu(MyRepository *myRepository)
 	while (answer)
 	{
 		cout << endl;
-		cout << "Главное меню репозитория " << myRepository->name <<  endl;
+		cout << "Главное меню репозитория " << myRepository->get_name() <<  endl;
 		cout << "1. Перейти в пространства имён" << endl;
 		cout << "0. Выйти из программы" << endl;
 		cout << endl;
@@ -323,6 +301,7 @@ int main()
 	cin.ignore(); // для удобства отладки
 }
 	
+
 /*
 	MyRepository *r = new MyRepository("TestRepository");
 	MyNamespace *n = new MyNamespace("TestNamespace");

@@ -1,5 +1,5 @@
 #include "MyField.h"
-
+/*
 class MyField1
 {
 public:
@@ -20,3 +20,4 @@ MyField::MyField()
 MyField::~MyField()
 {
 }
+*/

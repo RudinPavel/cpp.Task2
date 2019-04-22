@@ -1,5 +1,7 @@
 #include "MyClass.h"
 
+
+/*
 class MyClass1 : Container
 {
 public:
@@ -99,12 +101,130 @@ public:
 		cout << "Поля, свойства и методы " << endl;
 	}
 };
+*/
 
-MyClass::MyClass()
+
+MyClass::MyClass(string name)
 {
 }
 
-
 MyClass::~MyClass()
+{
+}
+
+void MyClass::add(MyField* myClass)
+{
+}
+
+void MyClass::add(MyProperty* myProperty)
+{
+}
+
+void MyClass::add(MyMethod* myMethod)
+{
+}
+
+void MyClass::deleteField(string name)
+{
+}
+
+void MyClass::deleteProperty(string name)
+{
+}
+
+void MyClass::deleteMethod(string name)
+{
+}
+
+int MyClass::findFieldIndexByName(string name)
+{
+	return 0;
+}
+
+MyField* MyClass::findClassByName(string name)
+{
+	return nullptr;
+}
+
+int MyClass::findPropertyIndexByName(string name)
+{
+	return 0;
+}
+
+MyProperty* MyClass::findPropertyByName(string name)
+{
+	return nullptr;
+}
+
+int MyClass::findMethodIndexByName(string name)
+{
+	return 0;
+}
+
+MyMethod* MyClass::findMethodByName(string name)
+{
+	return nullptr;
+}
+
+bool MyClass::existField(MyField* m)
+{
+	return false;
+}
+
+bool MyClass::existField(string name)
+{
+	return false;
+}
+
+bool MyClass::existProperty(MyProperty* m)
+{
+	return false;
+}
+
+bool MyClass::existProperty(string name)
+{
+	return false;
+}
+
+bool MyClass::existMethod(MyMethod* m)
+{
+	return false;
+}
+
+bool MyClass::existMethod(string name)
+{
+	return false;
+}
+
+void MyClass::printFields()
+{
+}
+
+void MyClass::printProperties()
+{
+}
+
+void MyClass::printMethods()
+{
+}
+
+void MyClass::changeField()
+{
+}
+
+void MyClass::changeProperty()
+{
+}
+
+void MyClass::changeMethod()
+{
+}
+
+string MyClass::get_name()
+{
+	return string();
+}
+
+void MyClass::set_name(string name)
 {
 }

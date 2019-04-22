@@ -148,6 +148,8 @@
     <ClInclude Include="MyNamespace.h" />
     <ClInclude Include="MyProperty.h" />
     <ClInclude Include="MyRepository.h" />
+    <ClInclude Include="MyUtils.h" />
+    <ClInclude Include="test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyClass.cpp" />
@@ -156,7 +158,9 @@
     <ClCompile Include="MyNamespace.cpp" />
     <ClCompile Include="MyProperty.cpp" />
     <ClCompile Include="MyRepository.cpp" />
+    <ClCompile Include="MyUtils.cpp" />
     <ClCompile Include="Task 2.5.1.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

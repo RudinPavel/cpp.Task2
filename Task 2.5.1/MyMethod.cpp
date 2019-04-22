@@ -1,5 +1,5 @@
 #include "MyMethod.h"
-
+/*
 class MyMethod1
 {
 public:
@@ -19,3 +19,4 @@ MyMethod::MyMethod()
 MyMethod::~MyMethod()
 {
 }
+*/
