@@ -1,10 +1,11 @@
 #pragma once
 
 #include "MyClass.h"
+#include "Container.h"
 #include <string>
 using namespace std;
 
-class MyNamespace
+class MyNamespace : public Container
 {
 public:
 	MyNamespace(string name); // конструктор класса

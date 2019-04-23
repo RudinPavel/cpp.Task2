@@ -142,6 +142,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Container.h" />
+    <ClInclude Include="Element.h" />
     <ClInclude Include="MyClass.h" />
     <ClInclude Include="MyField.h" />
     <ClInclude Include="MyMethod.h" />
@@ -149,9 +151,10 @@
     <ClInclude Include="MyProperty.h" />
     <ClInclude Include="MyRepository.h" />
     <ClInclude Include="MyUtils.h" />
-    <ClInclude Include="test.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Container.cpp" />
+    <ClCompile Include="Element.cpp" />
     <ClCompile Include="MyClass.cpp" />
     <ClCompile Include="MyField.cpp" />
     <ClCompile Include="MyMethod.cpp" />

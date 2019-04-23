@@ -19,3 +19,7 @@ string MyField::get_name()
 void MyField::set_name(string name)
 {
 }
+
+void MyField::print_all()
+{
+}

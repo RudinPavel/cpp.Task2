@@ -1,8 +1,9 @@
 #pragma once
 #include <string>
+#include "Container.h"
 using namespace std;
 
-class MyProperty
+class MyProperty : public Container
 {
 public:
 	MyProperty(string name);

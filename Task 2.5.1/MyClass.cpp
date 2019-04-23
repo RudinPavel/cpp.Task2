@@ -32,7 +32,7 @@ void MyClass::add(MyField* myField)
 
 void MyClass::add(MyProperty* myProperty)
 {
-	if (!existField(myProperty->get_name()) && MyUtils::check_valid_name(myProperty->get_name()))
+	if (!existProperty(myProperty->get_name()) && MyUtils::check_valid_name(myProperty->get_name()))
 	{
 		myProperties.push_back(myProperty);
 		cout << "Свойство " << myProperty->get_name() << " было успешно добавлено в класс " << name << endl;
@@ -42,7 +42,7 @@ void MyClass::add(MyProperty* myProperty)
 
 void MyClass::add(MyMethod* myMethod)
 {
-	if (!existField(myMethod->get_name()) && MyUtils::check_valid_name(myMethod->get_name()))
+	if (!existMethod(myMethod->get_name()) && MyUtils::check_valid_name(myMethod->get_name()))
 	{
 		myMethods.push_back(myMethod);
 		cout << "Метод " << myMethod->get_name() << " был успешно добавлен в класс " << name << endl;

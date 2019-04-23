@@ -4,7 +4,7 @@
 #include <vector>
 #include "MyNamespace.h"
 
-class MyRepository
+class MyRepository : public Container
 {
 public:
 	MyRepository(string name); // конструктор класса
