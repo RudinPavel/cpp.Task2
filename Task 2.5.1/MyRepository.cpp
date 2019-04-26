@@ -23,6 +23,38 @@ MyRepository::~MyRepository()
 	cout << "Успешно удалён репозиторий с именем " << name << endl; 
 }
 
+void MyRepository::print()
+{
+	cout << "Репозиторий " << name << endl;
+	cout << "{" << endl;
+	for each (Element* e in myNamespaces)
+	{
+		cout << e->
+	}
+	cout << "};" << endl;
+}
+
+void MyRepository::add(Element* e)
+{
+}
+
+void MyRepository::remove(Element* e)
+{
+}
+
+void MyRepository::change(Element* e, string name)
+{
+}
+
+Element* MyRepository::find_element_by_name(string name)
+{
+	return nullptr;
+}
+
+void MyRepository::change(Element* e)
+{
+}
+
 
 void MyRepository::add(MyNamespace* myNamespace)
 {

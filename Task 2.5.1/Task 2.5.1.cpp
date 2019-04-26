@@ -14,7 +14,8 @@
 
 using namespace std;
 
-void concrete_class_menu(MyClass *myClass)
+/*
+void concrete_class_menu(Element* e)
 {
 	int x = 0;
 	string current;
@@ -154,19 +155,19 @@ void concrete_class_menu(MyClass *myClass)
 }
 
 
-void concrete_namespace_menu(MyNamespace *myNamespace)
+void concrete_namespace_menu(Element* e)
 {
 	int x = 0;
 	string current;
 	bool answer = true;
 	string helper = "";
-	MyClass *myClass;
+	Element* h;
 
 	while (answer)
 	{
 		cout << endl;
-		cout << "Пространство имён " << myNamespace->get_name() << endl;
-		cout << "1. Посмотреть список классов" << endl;
+		cout << "Пространство имён " << e->get_name() << endl;
+		cout << "1. Посмотреть содержимое" << endl;
 		cout << "2. Перейти в класс" << endl;
 		cout << "3. Создать класс" << endl;
 		cout << "4. Изменить класс" << endl;
@@ -179,32 +180,32 @@ void concrete_namespace_menu(MyNamespace *myNamespace)
 		switch (x)
 		{
 		case 1:
-			myNamespace->printer();
+			e->print();
 			break;
 		case 2:
-			myNamespace->printer();
+			e->print();
 			cout << "Выберите имя класса, в который хотите войти" << endl;
 			cin >> current;
-			myClass = myNamespace->findClassByName(current);
-			if (myClass != NULL)
+			h = e->find_element_by_name(current);
+			if (h != NULL)
 			{
 				cout << "Переходим в класс имён с именем " << current << endl;
-				concrete_class_menu(myClass);
+				concrete_class_menu(h);
 			}
 			else cout << "Не удалось войти в класс с именем " << current << endl;
 			break;
 		case 3:
 			cout << "Выберите имя класса для добавления в пространство имён" << endl;
 			cin >> helper;  
-			myClass = new MyClass(helper);
-			myNamespace->add(myClass);
+			h = new MyClass(helper);
+			e->add(h);
 			break;
 		case 4:
-			myNamespace->printer();
+			e->print();
 			cout << "Выберите имя класса для изменения" << endl;
 			cin >> current;
-			myClass = myNamespace->findClassByName(current);
-			if (myClass != NULL)
+			h = e->find_element_by_name(current);
+			if (h != NULL)
 			{
 				cout << "Введите новое имя для класса" << endl;
 				cin >> current;
@@ -217,7 +218,7 @@ void concrete_namespace_menu(MyNamespace *myNamespace)
 			else cout << "Не удалось изменить имя класса" << endl;
 			break;
 		case 5:
-			myNamespace->printer();
+			e->print();
 			cout << "Выберите имя класса для удаления из пространства имён" << endl;
 			cin >> current;
 			myNamespace->deleteClass(current);
@@ -231,19 +232,19 @@ void concrete_namespace_menu(MyNamespace *myNamespace)
 		}
 	}
 }
-
-void namespaces_menu(MyRepository *myRepository)
+*/
+void namespaces_menu(Element* e)
 {
 	int x = 0;
 	string current;
 	bool answer = true;
 	string helper = "";
-	MyNamespace *myNamespace;
+	Element *h;
 
 	while (answer)
 	{
-		cout << "Пространства имён репозитория " << myRepository->get_name() << endl;
-		cout << "1. Посмотреть пространства имён" << endl;
+		cout << "Пространства имён репозитория " << e->get_name() << endl;
+		cout << "1. Посмотреть содержимое репозитория" << endl;
 		cout << "2. Перейти в пространство имён" << endl;
 		cout << "3. Создать пространство имён" << endl;
 		cout << "4. Изменить пространство имён" << endl;
@@ -256,44 +257,50 @@ void namespaces_menu(MyRepository *myRepository)
 		switch (x)
 		{
 		case 1:
-			myRepository->printer();
+			e->print();
 			break;
 		case 2:
-			myRepository->printer();
+			e->print();
 			cout << "Выберите имя пространства имён, в которое хотите войти" << endl;
 			cin >> current;
-			myNamespace = myRepository->findNamespaceByName(current);
-			if (myNamespace != NULL) 
+			h = e->find_element_by_name(current);
+			if (h != NULL) 
 			{
 				cout << "Переходим в пространство имён с именем " << current << endl;
-				concrete_namespace_menu(myNamespace);
+				cout << "Перешли в общем " << current << endl;
+				// concrete_namespace_menu(h);
 			}
 			else cout << "Не удалось войти в пространство имён с именем " << current << endl;
 			break;
 		case 3:
 			cout << "Выберите имя пространства имён для добавления в репозиторий" << endl;
 			cin >> helper;  
-			myNamespace = new MyNamespace(helper);
-			myRepository->add(myNamespace);
+			h = new MyNamespace(helper);
+			e->add(h);
 			break;
 		case 4:
-			myRepository->printer();
+			e->print();
 			cout << "Выберите имя пространства имён для изменения" << endl;
 			cin >> current;
-			myNamespace = myRepository->findNamespaceByName(current);
-			if (myNamespace != NULL)
+			h = e->find_element_by_name(current);
+			if (h != NULL)
 			{
 				cout << "Введите новое имя для пространства имён" << endl;
 				cin >> current;
-				myRepository->change(current, myNamespace);
+				e->change(h, current);
 			}
 			else cout << "Не удалось изменить имя пространства имён" << endl;
 			break;
 		case 5:
-			myRepository->printer();
+			e->print();
 			cout << "Выберите имя пространства имён для удаления из репозитория" << endl;
 			cin >> current;
-			myRepository->deleteNamespace(current);
+			h = e->find_element_by_name(current);
+			if (h != NULL)
+			{
+				e->remove(h);
+			}
+			else cout << "Не удалось удалить имя пространства имён " << current << endl;
 			break;
 		case 0:
 			answer = false;
@@ -305,7 +312,7 @@ void namespaces_menu(MyRepository *myRepository)
 	}
 }
 
-void main_menu(MyRepository *myRepository)
+void main_menu(Element* e)
 {
 	int x = 0;
 	bool answer = true;
@@ -313,7 +320,7 @@ void main_menu(MyRepository *myRepository)
 	while (answer)
 	{
 		cout << endl;
-		cout << "Главное меню репозитория " << myRepository->get_name() <<  endl;
+		cout << "Главное меню репозитория " << e->get_name() <<  endl;
 		cout << "1. Перейти в пространства имён" << endl;
 		cout << "0. Выйти из программы" << endl;
 		cout << endl;
@@ -323,7 +330,7 @@ void main_menu(MyRepository *myRepository)
 		switch (x)
 		{
 		case 1:
-			namespaces_menu(myRepository);
+			namespaces_menu(e);
 			break;
 		case 0:
 			cout << "Завершаем работу с программой" << endl;
@@ -340,12 +347,13 @@ int main()
 {
 	setlocale(LC_ALL, "Russian"); // установка локализации для корректного отображения русских символов
 
-	MyRepository *test = new MyRepository("Учебный");  // создание нового репозитория
-
+	Element* test = new MyRepository("Учебный");  // создание нового репозитория
+	
 	main_menu(test); // вызов основного меню приложения
 
 	cin.ignore(); 
 	cin.ignore(); // для удобства отладки
+	delete test;
 }
 	
 

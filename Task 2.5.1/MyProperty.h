@@ -1,9 +1,11 @@
 #pragma once
+
+#include "Element.h"
+
 #include <string>
-#include "Container.h"
 using namespace std;
 
-class MyProperty : public Container
+class MyProperty : public Element
 {
 public:
 	MyProperty(string name);

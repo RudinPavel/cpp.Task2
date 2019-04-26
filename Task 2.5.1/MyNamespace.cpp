@@ -21,6 +21,27 @@ MyNamespace::~MyNamespace()
 	cout << "Успешно удалили пространство имён" << endl;
 }
 
+void MyNamespace::print()
+{
+}
+
+void MyNamespace::add(Element* e)
+{
+}
+
+void MyNamespace::remove(Element* e)
+{
+}
+
+void MyNamespace::change(Element* e, string name)
+{
+}
+
+Element* MyNamespace::find_element_by_name(string name)
+{
+	return nullptr;
+}
+
 void MyNamespace::add(MyClass* myClass)
 {
 	if (!exist(myClass->get_name()) && MyUtils::check_valid_name(myClass->get_name()))

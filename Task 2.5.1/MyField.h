@@ -1,10 +1,9 @@
 #pragma once
-class Container;
+#include "Element.h"
 #include <string>
-#include "Container.h"
 using namespace std;
 
-class MyField : public Container
+class MyField : public Element
 {
 public:
 	MyField(string name);

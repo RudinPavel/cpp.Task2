@@ -2,12 +2,12 @@
 #include "MyField.h"
 #include "MyProperty.h"
 #include "MyMethod.h"
-#include "Container.h"
+#include "Element.h"
 #include <vector>
 #include <string>
 using namespace std;
 
-class MyClass : public Container
+class MyClass : public Element
 {
 public:
 	MyClass(string name); // конструктор класса

@@ -1,9 +1,9 @@
 #pragma once
+#include "Element.h"
 #include <string>
-#include "Container.h"
 using namespace std;
 
-class MyMethod : public Container
+class MyMethod : public Element
 {
 public:
 	MyMethod(string name);
