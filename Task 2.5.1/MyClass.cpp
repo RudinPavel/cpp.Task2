@@ -25,12 +25,12 @@ void MyClass::print()
 void MyClass::add(string name, int i)
 {
 	Element* e;
-	if (i==1)
-		Element* e = new MyField(name);
-	if (i==2)
-		Element* e = new MyProperty(name);
+	if (i == 1)
+		e = new MyField(name);
+	if (i == 2)
+		e = new MyProperty(name);
 	if (i == 3)
-		Element * e = new MyMethod(name);
+		e = new MyMethod(name);
 	elements.push_back(e);
 	cout << "Успешно добавили сущность" << endl;
 }

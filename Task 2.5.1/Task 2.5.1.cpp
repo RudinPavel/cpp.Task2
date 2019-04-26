@@ -52,7 +52,7 @@ void concrete_class_menu(Element* e)
 			}
 			else
 			{
-				cout << "Не удалось добавить класс " << helper << endl;
+				cout << "Не удалось добавить поле класс " << helper << endl;
 				cout << endl;
 			}
 			break;
@@ -65,7 +65,7 @@ void concrete_class_menu(Element* e)
 			}
 			else
 			{
-				cout << "Не удалось добавить класс " << helper << endl;
+				cout << "Не удалось добавить свойство в класс " << helper << endl;
 				cout << endl;
 			}
 			break;
@@ -78,7 +78,7 @@ void concrete_class_menu(Element* e)
 			}
 			else
 			{
-				cout << "Не удалось добавить сущность" << helper << endl;
+				cout << "Не удалось добавить метод в класс" << helper << endl;
 				cout << endl;
 			}
 			break;
