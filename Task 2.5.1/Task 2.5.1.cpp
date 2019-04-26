@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 
+#include "MyUtils.h"
 #include "MyRepository.h"
 #include "MyNamespace.h"
 #include "MyClass.h"
@@ -14,33 +15,24 @@
 
 using namespace std;
 
-/*
 void concrete_class_menu(Element* e)
 {
 	int x = 0;
-	string current;
 	bool answer = true;
 	string helper = "";
-	MyField *myField;
-	MyProperty *myProperty;
-	MyMethod *myMethod;
+	Element* h;
+	MyUtils* u = new MyUtils();
 
 	while (answer)
 	{
 		cout << endl;
-		cout << "Класс " << myClass->get_name() << endl;
-		cout << "1. Посмотреть список полей" << endl;
-		cout << "2. Посмотреть список свойств" << endl;
-		cout << "3. Посмотреть список методов" << endl;
-		cout << "4. Создать поле" << endl;
-		cout << "5. Создать свойство" << endl;
-		cout << "6. Создать метод" << endl;
-		cout << "7. Изменить поле" << endl;
-		cout << "8. Изменить свойство" << endl;
-		cout << "9. Изменить метод" << endl;
-		cout << "10. Удалить поле" << endl;
-		cout << "11. Удалить свойство" << endl;
-		cout << "12. Удалить метод" << endl;
+		cout << "Класс " << e->get_name() << endl;
+		cout << "1. Посмотреть содержимое" << endl;
+		cout << "2. Создать поле" << endl;
+		cout << "3. Создать свойство" << endl;
+		cout << "4. Создать метод" << endl;
+		cout << "5. Изменить сущность" << endl;
+		cout << "6. Удалить сущность" << endl;
 		cout << "0. Вернуться в меню пространства имён" << endl;
 		cout << endl;
 
@@ -49,100 +41,78 @@ void concrete_class_menu(Element* e)
 		switch (x)
 		{
 		case 1:
-			myClass->printFields();
+			e->print();
 			break;
 		case 2:
-			myClass->printProperties();
+			cout << "Выберите имя поля для добавления в класс" << endl;
+			cin >> helper;
+			if (u->check_valid_name(helper) && e->not_exist(helper))
+			{
+				e->add(helper);
+			}
+			else
+			{
+				cout << "Не удалось добавить класс " << helper << endl;
+				cout << endl;
+			}
 			break;
 		case 3:
-			myClass->printMethods();
+			cout << "Выберите имя поля для добавления в класс" << endl;
+			cin >> helper;
+			if (u->check_valid_name(helper) && e->not_exist(helper))
+			{
+				e->add(helper);
+			}
+			else
+			{
+				cout << "Не удалось добавить класс " << helper << endl;
+				cout << endl;
+			}
 			break;
 		case 4:
 			cout << "Выберите имя поля для добавления в класс" << endl;
 			cin >> helper;
-			myField = new MyField(helper);
-			myClass->add(myField);
+			if (u->check_valid_name(helper) && e->not_exist(helper))
+			{
+				e->add(helper);
+			}
+			else
+			{
+				cout << "Не удалось добавить сущность" << helper << endl;
+				cout << endl;
+			}
 			break;
 		case 5:
-			cout << "Выберите имя свойства для добавления в класс" << endl;
+			e->print();
+			cout << "Выберите имя сущности для изменения" << endl;
 			cin >> helper;
-			myProperty = new MyProperty(helper);
-			myClass->add(myProperty);
+			h = e->find_element_by_name(helper);
+			if (h != NULL)
+			{
+				cout << "Введите новое имя сущности" << endl;
+				cin >> helper;
+				e->change(h, helper);
+			}
+			else
+			{
+				cout << "Не удалось изменить имя сущности" << endl;
+				cout << endl;
+			}
 			break;
 		case 6:
-			cout << "Выберите имя метода для добавления в класс" << endl;
+			e->print();
+			cout << "Выберите имя сущности для удаления" << endl;
 			cin >> helper;
-			myMethod = new MyMethod(helper);
-			myClass->add(myMethod);
-			break;
-		case 7:
-			myClass->printFields();
-			cout << "Выберите имя поля для изменения" << endl;
-			cin >> current;
-			myField = myClass->findFieldByName(current);
-			if (myField != NULL)
+			if (e->find_element_index_by_name(helper) != -1)
 			{
-				cout << "Введите новое имя для поля" << endl;
-				cin >> current;
-				if (myClass->existField(current))
-				{
-					myClass->changeField(current, myField);
-					cout << "Успешно изменили поле класса" << endl;
-				}
+				e->remove(e->find_element_index_by_name(helper));
 			}
-			else cout << "Не удалось изменить поле класса" << endl;
-			break;
-		case 8:
-			myClass->printProperties();
-			cout << "Выберите имя свойства для изменения" << endl;
-			cin >> current;
-			myProperty = myClass->findPropertyByName(current);
-			if (myProperty != NULL)
+			else
 			{
-				cout << "Введите новое имя свойства" << endl;
-				cin >> current;
-				if (myClass->existProperty(current))
-				{
-					myClass->changeProperty(current, myProperty);
-					cout << "Успешно изменили свойство класса" << endl;
-				}
+				cout << "Не удалось удалить сущность " << helper << endl;
+				cout << endl;
 			}
-			else cout << "Не удалось изменить свойство" << endl;
 			break;
-		case 9:
-			myClass->printMethods();
-			cout << "Выберите имя метода для изменения" << endl;
-			cin >> current;
-			myMethod = myClass->findMethodByName(current);
-			if (myMethod != NULL)
-			{
-				cout << "Введите новое имя метода" << endl;
-				cin >> current;
-				if (myClass->existMethod(current))
-				{
-					myClass->changeMethod(current, myMethod);
-					cout << "Успешно изменили метод класса" << endl;
-				}
-			}
-			else cout << "Не удалось изменить метод класса" << endl;
-			break;
-		case 10:
-			myClass->printFields();
-			cout << "Выберите имя поля для удаления из класса" << endl;
-			cin >> current;
-			myClass->deleteField(current);
-			break;
-		case 11:
-			myClass->printProperties();
-			cout << "Выберите имя свойства для удаления из класса" << endl;
-			cin >> current;
-			myClass->deleteProperty(current);
-			break;
-		case 12:
-			myClass->printMethods();
-			cout << "Выберите имя метода для для удаления из класса" << endl;
-			cin >> current;
-			myClass->deleteMethod(current);
 			break;
 		case 0:
 			answer = false;
@@ -154,7 +124,6 @@ void concrete_class_menu(Element* e)
 	}
 }
 
-
 void concrete_namespace_menu(Element* e)
 {
 	int x = 0;
@@ -162,6 +131,7 @@ void concrete_namespace_menu(Element* e)
 	bool answer = true;
 	string helper = "";
 	Element* h;
+	MyUtils* u = new MyUtils();
 
 	while (answer)
 	{
@@ -185,43 +155,62 @@ void concrete_namespace_menu(Element* e)
 		case 2:
 			e->print();
 			cout << "Выберите имя класса, в который хотите войти" << endl;
-			cin >> current;
-			h = e->find_element_by_name(current);
+			cin >> helper;
+			h = e->find_element_by_name(helper);
 			if (h != NULL)
 			{
-				cout << "Переходим в класс имён с именем " << current << endl;
-				concrete_class_menu(h);
+				cout << "Переходим в класс с именем " << helper << endl;
+				concrete_namespace_menu(h);
 			}
-			else cout << "Не удалось войти в класс с именем " << current << endl;
+			else
+			{
+				cout << "Не удалось войти в класс с именем " << helper << endl;
+				cout << endl;
+			}
 			break;
 		case 3:
-			cout << "Выберите имя класса для добавления в пространство имён" << endl;
-			cin >> helper;  
-			h = new MyClass(helper);
-			e->add(h);
+			cout << "Выберите имя класса для добавления" << endl;
+			cin >> helper;
+			if (u->check_valid_name(helper) && e->not_exist(helper))
+			{
+				e->add(helper);
+			}
+			else
+			{
+				cout << "Не удалось добавить класс " << helper << endl;
+				cout << endl;
+			}
 			break;
 		case 4:
 			e->print();
 			cout << "Выберите имя класса для изменения" << endl;
-			cin >> current;
-			h = e->find_element_by_name(current);
+			cin >> helper;
+			h = e->find_element_by_name(helper);
 			if (h != NULL)
 			{
 				cout << "Введите новое имя для класса" << endl;
-				cin >> current;
-				if (myNamespace->exist(current))
-				{
-					myNamespace->change(current, myClass);
-					cout << "Успешно изменили класс" << endl;
-				}
+				cin >> helper;
+				e->change(h, helper);
 			}
-			else cout << "Не удалось изменить имя класса" << endl;
+			else
+			{
+				cout << "Не удалось изменить имя класса" << endl;
+				cout << endl;
+			}
 			break;
 		case 5:
 			e->print();
 			cout << "Выберите имя класса для удаления из пространства имён" << endl;
-			cin >> current;
-			myNamespace->deleteClass(current);
+			cin >> helper;
+			if (e->find_element_index_by_name(helper) != -1)
+			{
+				e->remove(e->find_element_index_by_name(helper));
+			}
+			else
+			{
+				cout << "Не удалось удалить класс " << helper << endl;
+				cout << endl;
+			}
 			break;
 		case 0:
 			answer = false;
@@ -232,14 +221,14 @@ void concrete_namespace_menu(Element* e)
 		}
 	}
 }
-*/
+
 void namespaces_menu(Element* e)
 {
 	int x = 0;
-	string current;
 	bool answer = true;
 	string helper = "";
 	Element *h;
+	MyUtils* u = new MyUtils();
 
 	while (answer)
 	{
@@ -262,45 +251,62 @@ void namespaces_menu(Element* e)
 		case 2:
 			e->print();
 			cout << "Выберите имя пространства имён, в которое хотите войти" << endl;
-			cin >> current;
-			h = e->find_element_by_name(current);
+			cin >> helper;
+			h = e->find_element_by_name(helper);
 			if (h != NULL) 
 			{
-				cout << "Переходим в пространство имён с именем " << current << endl;
-				cout << "Перешли в общем " << current << endl;
-				// concrete_namespace_menu(h);
+				cout << "Переходим в пространство имён с именем " << helper << endl;
+				concrete_namespace_menu(h);
 			}
-			else cout << "Не удалось войти в пространство имён с именем " << current << endl;
+			else
+			{
+				cout << "Не удалось войти в пространство имён с именем " << helper << endl;
+				cout << endl;
+			}
 			break;
 		case 3:
 			cout << "Выберите имя пространства имён для добавления в репозиторий" << endl;
 			cin >> helper;  
-			h = new MyNamespace(helper);
-			e->add(h);
+			if (u->check_valid_name(helper) && e->not_exist(helper))
+			{
+				e->add(helper);
+			}
+			else
+			{
+				cout << "Не удалось добавить пространство имён " << helper << endl;
+				cout << endl;
+			}
 			break;
 		case 4:
 			e->print();
 			cout << "Выберите имя пространства имён для изменения" << endl;
-			cin >> current;
-			h = e->find_element_by_name(current);
+			cin >> helper;
+			h = e->find_element_by_name(helper);
 			if (h != NULL)
 			{
 				cout << "Введите новое имя для пространства имён" << endl;
-				cin >> current;
-				e->change(h, current);
+				cin >> helper;
+				e->change(h, helper);
 			}
-			else cout << "Не удалось изменить имя пространства имён" << endl;
+			else
+			{
+				cout << "Не удалось изменить пространство имён" << endl;
+				cout << endl;
+			}
 			break;
 		case 5:
 			e->print();
-			cout << "Выберите имя пространства имён для удаления из репозитория" << endl;
-			cin >> current;
-			h = e->find_element_by_name(current);
-			if (h != NULL)
+			cout << "Выберите имя пространства имён для удаления" << endl;
+			cin >> helper;
+			if (e->find_element_index_by_name(helper) != -1)
 			{
-				e->remove(h);
+				e->remove(e->find_element_index_by_name(helper));
 			}
-			else cout << "Не удалось удалить имя пространства имён " << current << endl;
+			else
+			{
+				cout << "Не удалось удалить пространство имён " << helper << endl;
+				cout << endl;
+			}
 			break;
 		case 0:
 			answer = false;
@@ -320,7 +326,7 @@ void main_menu(Element* e)
 	while (answer)
 	{
 		cout << endl;
-		cout << "Главное меню репозитория " << e->get_name() <<  endl;
+		cout << "Главное меню репозитория " << e->get_name() << endl;
 		cout << "1. Перейти в пространства имён" << endl;
 		cout << "0. Выйти из программы" << endl;
 		cout << endl;
@@ -342,7 +348,7 @@ void main_menu(Element* e)
 		}
 	}
 }
-
+	
 int main()
 {
 	setlocale(LC_ALL, "Russian"); // установка локализации для корректного отображения русских символов

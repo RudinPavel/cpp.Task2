@@ -18,4 +18,5 @@ string MyProperty::get_name()
 
 void MyProperty::set_name(string name)
 {
+	this->name = name;
 }

@@ -10,50 +10,30 @@ using namespace std;
 class MyClass : public Element
 {
 public:
-	MyClass(string name); // конструктор класса
-	~MyClass(); // деструктор класса
+	void print() override; // печать сущности
 
-	void add(MyField* myClass); // добавить поле
-	void add(MyProperty* myProperty); // добавить свойство
-	void add(MyMethod* myMethod); // добавить метод
+	void add(string name) override; // добавление сущности
 
-	void deleteField(string name); // удалить поле
-	void deleteProperty(string name); // удалить свойство
-	void deleteMethod(string name); // удалить метод
+	void remove(int index) override; // удаление сущности
 
-	int findFieldIndexByName(string name);
-	MyField* findFieldByName(string name);
+	void change(Element* e, string name)  override; // изменение сущности
 
-	int findPropertyIndexByName(string name);
-	MyProperty* findPropertyByName(string name);
+	void set_name(string name) override;
 
-	int findMethodIndexByName(string name);
-	MyMethod* findMethodByName(string name);
+	string get_name() override; // получение имени сущности
 
-	bool existField(MyField* m);
-	bool existField(string name); // проверить существование класса в пространстве имен
+	bool not_exist(string name) override;
 
-	bool existProperty(MyProperty* m);
-	bool existProperty(string name); // проверить существование класса в пространстве имен
+	Element* find_element_by_name(string name) override;
 
-	bool existMethod(MyMethod* m);
-	bool existMethod(string name); // проверить существование класса в пространстве имен
+	int find_element_index_by_name(string name) override;
 
-	void printFields(); // напечатать список полей
-	void printProperties(); // напечатать список свойств
-	void printMethods(); // напечатать список методов
+	MyClass(string name); // конструктор сущности Не может быть virtual
 
-	void changeField(string name, MyField* m); // напечатать список полей
-	void changeProperty(string name, MyProperty* m); // напечатать список свойств
-	void changeMethod(string name, MyMethod* m); // напечатать список методов
-
-	string get_name(); // получить имя пространства имен
-	void set_name(string name);  // установить имя пространства имен
+	~MyClass() override; // деструктор сущности
 
 private:
 	string name; 
-	vector<MyField*> myFields;
-	vector<MyProperty*> myProperties;
-	vector<MyMethod*> myMethods;
+	vector<Element*> elements;
 };
 

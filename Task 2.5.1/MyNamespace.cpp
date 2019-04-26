@@ -7,6 +7,101 @@
 
 using namespace std;
 
+void MyNamespace::print()
+{
+	cout << "Пространство имён " << name << endl;
+	cout << "{" << endl;
+	for each (Element * e in elements)
+	{
+		e->print();
+	}
+	cout << "}" << endl;
+	cout << endl;
+}
+
+void MyNamespace::add(string name)
+{
+	Element* e = new MyNamespace(name);
+	elements.push_back(e);
+	cout << "Успешно добавили пространство имён" << endl;
+}
+
+void MyNamespace::remove(int index)
+{
+	Element* d = elements.at(index);
+	elements.erase(this->elements.begin() + index);
+	delete d;
+	cout << "Удалили пространство имён" << endl;
+}
+
+void MyNamespace::change(Element * e, string name)
+{
+	e->set_name(name);
+}
+
+void MyNamespace::set_name(string name)
+{
+	this->name = name;
+}
+
+string MyNamespace::get_name()
+{
+	return name;
+}
+
+bool MyNamespace::not_exist(string name)
+{
+	for each (Element * e in elements)
+	{
+		if (e->get_name() == name)
+			return false;
+	}
+	return true;
+}
+
+Element* MyNamespace::find_element_by_name(string name)
+{
+	for each (Element * e in elements)
+	{
+		if (e->get_name() == name)
+			return e;
+	}
+	return NULL; //nullptr
+}
+
+int MyNamespace::find_element_index_by_name(string name)
+{
+	int size = static_cast<int>(elements.size());
+	for (int i = 0; i < size; i++)
+	{
+		if (elements[i]->get_name() == name)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+MyNamespace::MyNamespace(string name)
+{
+	this->name = name;
+}
+
+MyNamespace::~MyNamespace()
+{
+	for each (Element * e in elements)
+	{
+		delete e;
+	}
+}
+
+
+
+
+
+
+
+/*
 MyNamespace::MyNamespace(string name)
 {
 	if (MyUtils::check_valid_name(name))

@@ -8,34 +8,27 @@ using namespace std;
 class MyNamespace : public Element
 {
 public:
-	MyNamespace(string name); // конструктор класса
-	~MyNamespace(); // деструктор класса
-
 	void print() override; // печать сущности
 
-	void add(Element* e) override; // добавить пространство имён
+	void add(string name) override; // добавление сущности
 
-	void remove(Element* e) override; // удалить пространство, которое будет найдено по имени
+	void remove(int index) override; // удаление сущности
 
-	void change(Element* e, string name) override; // удалить пространство, которое будет найдено по имени
+	void change(Element* e, string name)  override; // изменение сущности
+
+	void set_name(string name) override;
+
+	string get_name() override; // получение имени сущности
+
+	bool not_exist(string name) override;
 
 	Element* find_element_by_name(string name) override;
 
-	//void add(MyClass* myClass); // добавить класс
-	//void deleteClass(string name); // удалить класс
+	int find_element_index_by_name(string name) override;
 
-	//int findIndexByName(string name);
-	//MyClass* findClassByName(string name);
+	MyNamespace(string name); // конструктор сущности Не может быть virtual
 
-	//bool exist(MyClass* m); 
-	//bool exist(string name); // проверить существование класса в пространстве имен
-
-	//void printer(); // напечатать список классов
-	//void change(string name, MyClass* m); // изменить класс
-
-	string get_name(); // получить имя пространства имен
-	void set_name(string name);  // установить имя пространства имен
-
+	~MyNamespace() override; // деструктор сущности
 private:
 	string name; // поле
 	vector<Element*> elements; // вектор указателей на классы

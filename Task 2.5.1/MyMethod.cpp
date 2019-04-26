@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+
 MyMethod::MyMethod(string name)
 {
 	this->name = name;
@@ -18,4 +19,5 @@ string MyMethod::get_name()
 
 void MyMethod::set_name(string name)
 {
+	this->name = name;
 }

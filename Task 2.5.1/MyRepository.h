@@ -4,43 +4,35 @@
 #include <string>
 #include "Element.h"
 
+using namespace std;
+
 class MyRepository : public Element
 {
 public:
-	MyRepository(string name); // конструктор класса
-	~MyRepository(); // деструктор
-
 	void print() override; // печать сущности
 
-	void add(Element* e) override; // добавить пространство имЄн
+	void add(string name) override; // добавление сущности
 
-	void remove(Element* e) override; // удалить пространство, которое будет найдено по имени
+	void remove(int index) override; // удаление сущности
 
-	void change(Element* e, string name) override; // удалить пространство, которое будет найдено по имени
+	void change(Element* e, string name)  override; // изменение сущности
+
+	void set_name(string name) override;
+
+	string get_name() override; // получение имени сущности
+
+	bool not_exist(string name) override;
 
 	Element* find_element_by_name(string name) override;
-									  
-									  
-									  
-									  
-									  
-									  
-									  
-									  
-	//int findIndexByName(string name);
-	//MyNamespace* findNamespaceByName(string name);
 
-	//bool exist(MyNamespace* m);
-	//bool exist(string name); // проверить существование имени пространства имен в репозитории
+	int find_element_index_by_name(string name) override;
 
-	//void printer(); // напечатать список пространств имЄн
-	//void change(string name, MyNamespace* m); // изменить пространство имЄн
+	MyRepository(string name); // конструктор сущности Ќе может быть virtual
 
-	string get_name(); // получить им€ репозитори€
-	void set_name(string name);  // установить им€ репозитори€
+	~MyRepository() override; // деструктор сущности
 
 private:
 	string name; // поле
-	vector<Element*> myNamespaces; // вектор указателей на пространства имЄн
+	vector<Element*> elements; // вектор указателей на пространства имЄн
 };
 
