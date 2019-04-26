@@ -11,6 +11,8 @@ public:
 
 	virtual void add(string name) = 0; // добавление сущности
 
+	virtual void add(string name, int i) = 0;
+
 	virtual void remove(int index) = 0; // удаление сущности
 
 	virtual void change(Element* e, string name) = 0; // изменение сущности

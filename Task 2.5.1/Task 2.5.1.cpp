@@ -48,7 +48,7 @@ void concrete_class_menu(Element* e)
 			cin >> helper;
 			if (u->check_valid_name(helper) && e->not_exist(helper))
 			{
-				e->add(helper);
+				e->add(helper, 1);
 			}
 			else
 			{
@@ -57,11 +57,11 @@ void concrete_class_menu(Element* e)
 			}
 			break;
 		case 3:
-			cout << "Выберите имя поля для добавления в класс" << endl;
+			cout << "Выберите имя свойства для добавления в класс" << endl;
 			cin >> helper;
 			if (u->check_valid_name(helper) && e->not_exist(helper))
 			{
-				e->add(helper);
+				e->add(helper, 2);
 			}
 			else
 			{
@@ -70,11 +70,11 @@ void concrete_class_menu(Element* e)
 			}
 			break;
 		case 4:
-			cout << "Выберите имя поля для добавления в класс" << endl;
+			cout << "Выберите имя метода для добавления в класс" << endl;
 			cin >> helper;
 			if (u->check_valid_name(helper) && e->not_exist(helper))
 			{
-				e->add(helper);
+				e->add(helper, 3);
 			}
 			else
 			{
@@ -160,7 +160,7 @@ void concrete_namespace_menu(Element* e)
 			if (h != NULL)
 			{
 				cout << "Переходим в класс с именем " << helper << endl;
-				concrete_namespace_menu(h);
+				concrete_class_menu(h);
 			}
 			else
 			{

@@ -13,6 +13,8 @@ public:
 
 	void add(string name) override; // добавление сущности
 
+	virtual void add(string name, int i);
+
 	void remove(int index) override; // удаление сущности
 
 	void change(Element* e, string name)  override; // изменение сущности

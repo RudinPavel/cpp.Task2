@@ -21,9 +21,13 @@ void MyNamespace::print()
 
 void MyNamespace::add(string name)
 {
-	Element* e = new MyNamespace(name);
+	Element* e = new MyClass(name);
 	elements.push_back(e);
-	cout << "Успешно добавили пространство имён" << endl;
+	cout << "Успешно добавили класс" << endl;
+}
+
+void MyNamespace::add(string name, int i)
+{
 }
 
 void MyNamespace::remove(int index)
@@ -31,7 +35,7 @@ void MyNamespace::remove(int index)
 	Element* d = elements.at(index);
 	elements.erase(this->elements.begin() + index);
 	delete d;
-	cout << "Удалили пространство имён" << endl;
+	cout << "Удалили класс" << endl;
 }
 
 void MyNamespace::change(Element * e, string name)

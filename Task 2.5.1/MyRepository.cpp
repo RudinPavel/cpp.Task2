@@ -27,6 +27,10 @@ void MyRepository::add(string name)
 	cout << endl;
 }
 
+void MyRepository::add(string name, int i)
+{
+}
+
 void MyRepository::remove(int index)
 {
 	Element* d = elements.at(index);

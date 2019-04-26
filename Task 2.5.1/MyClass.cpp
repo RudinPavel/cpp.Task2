@@ -12,7 +12,7 @@ using namespace std;
 
 void MyClass::print()
 {
-	cout << "Класс" << name << endl;
+	cout << "Класс " << name << endl;
 	cout << "{" << endl;
 	for each (Element * e in elements)
 	{
@@ -22,11 +22,21 @@ void MyClass::print()
 	cout << endl;
 }
 
+void MyClass::add(string name, int i)
+{
+	Element* e;
+	if (i==1)
+		Element* e = new MyField(name);
+	if (i==2)
+		Element* e = new MyProperty(name);
+	if (i == 3)
+		Element * e = new MyMethod(name);
+	elements.push_back(e);
+	cout << "Успешно добавили сущность" << endl;
+}
+
 void MyClass::add(string name)
 {
-	Element* e = new MyClass(name);
-	elements.push_back(e);
-	cout << "Успешно добавили пространство имён" << endl;
 }
 
 void MyClass::remove(int index)

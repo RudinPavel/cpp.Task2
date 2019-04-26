@@ -12,7 +12,9 @@ class MyClass : public Element
 public:
 	void print() override; // печать сущности
 
-	void add(string name) override; // добавление сущности
+	void add(string name, int i); // добавление сущности
+
+	void add(string name);
 
 	void remove(int index) override; // удаление сущности
 
