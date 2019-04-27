@@ -20,6 +20,7 @@ void concrete_class_menu(Element* e)
 	int x = 0;
 	bool answer = true;
 	string helper = "";
+	string value = "";
 	Element* h;
 	MyUtils* u = new MyUtils();
 
@@ -46,9 +47,11 @@ void concrete_class_menu(Element* e)
 		case 2:
 			cout << "¬ыберите им€ пол€ дл€ добавлени€ в класс" << endl;
 			cin >> helper;
+			cout << "¬ыберите тип пол€ дл€ добавлени€ в класс" << endl;
+			cin >> value;
 			if (u->check_valid_name(helper) && e->not_exist(helper))
 			{
-				e->add(helper, 1);
+				e->add(helper, Field, value);
 			}
 			else
 			{
@@ -59,9 +62,11 @@ void concrete_class_menu(Element* e)
 		case 3:
 			cout << "¬ыберите им€ свойства дл€ добавлени€ в класс" << endl;
 			cin >> helper;
+			cout << "¬ыберите тип свойства дл€ добавлени€ в класс" << endl;
+			cin >> value;
 			if (u->check_valid_name(helper) && e->not_exist(helper))
 			{
-				e->add(helper, 2);
+				e->add(helper, Property, value);
 			}
 			else
 			{
@@ -72,9 +77,11 @@ void concrete_class_menu(Element* e)
 		case 4:
 			cout << "¬ыберите им€ метода дл€ добавлени€ в класс" << endl;
 			cin >> helper;
+			cout << "¬ыберите тип возвращаемого значени€ дл€ добавлени€ в класс" << endl;
+			cin >> value;
 			if (u->check_valid_name(helper) && e->not_exist(helper))
 			{
-				e->add(helper, 3);
+				e->add(helper, Method, value);
 			}
 			else
 			{
@@ -353,7 +360,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian"); // установка локализации дл€ корректного отображени€ русских символов
 
-	Element* test = new MyRepository("”чебный");  // создание нового репозитори€
+	Element* test = new MyRepository("Test");  // создание нового репозитори€
 	
 	main_menu(test); // вызов основного меню приложени€
 

@@ -3,9 +3,10 @@
 #include <iostream>
 using namespace std;
 
-MyField::MyField(string name)
+MyField::MyField(string name, string value)
 {
 	this->name = name;
+	this->value = value;
 }
 
 MyField::~MyField()
@@ -24,16 +25,27 @@ void MyField::set_name(string name)
 
 void MyField::print()
 {
-	cout << "Поле " << name << endl;
+	cout << value << " " << name << ";"<< endl;
+}
+
+void MyField::set_value(string value)
+{
+	this->value = value;
+}
+
+string MyField::get_value()
+{
+	return value;
 }
 
 void MyField::add(string name)
 {
 }
 
-void MyField::add(string name, int i)
+void MyField::add(string name, MyClassMemberType t, string value)
 {
 }
+
 
 void MyField::remove(int index)
 {

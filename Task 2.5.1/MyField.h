@@ -6,15 +6,19 @@ using namespace std;
 class MyField : public Element
 {
 public:
-	MyField(string name);
+	MyField(string name, string value);
 	~MyField();
 	string get_name();
 	void set_name(string name);
 	void print();
 
+	void set_value(string value);
+
+	string get_value();
+
 	void add(string name);
 
-	void add(string name, int i);
+	void add(string name, MyClassMemberType t, string value);
 
 	void remove(int index);
 
@@ -27,6 +31,7 @@ public:
 	int find_element_index_by_name(string name);
 private:
 	string name;
+	string value;
 };
 
 

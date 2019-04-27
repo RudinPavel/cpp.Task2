@@ -6,15 +6,17 @@ using namespace std;
 class MyMethod : public Element
 {
 public:
-	MyMethod(string name);
+	MyMethod(string name, string value);
 	~MyMethod();
 	string get_name();
 	void set_name(string name);
+	string get_value();
+	void set_value(string value);
 	void print();
 
 	void add(string name);
 
-	void add(string name, int i);
+	void add(string name, MyClassMemberType t, string value);
 
 	void remove(int index);
 
@@ -27,4 +29,5 @@ public:
 	int find_element_index_by_name(string name);
 private:
 	string name;
+	string value;
 };

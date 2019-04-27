@@ -1,5 +1,6 @@
 #pragma once
 
+#include "MyClassMember.h"
 #include <vector>
 #include <string>
 using namespace std;
@@ -11,11 +12,15 @@ public:
 
 	virtual void add(string name) = 0; // добавление сущности
 
-	virtual void add(string name, int i) = 0;
+	virtual void add(string name, MyClassMemberType t, string value) = 0;
 
 	virtual void remove(int index) = 0; // удаление сущности
 
 	virtual void change(Element* e, string name) = 0; // изменение сущности
+
+	virtual void set_value(string value) = 0;
+
+	virtual string get_value() = 0; // получение имени сущности
 
 	virtual void set_name(string name) = 0;
 

@@ -4,9 +4,10 @@
 using namespace std;
 
 
-MyMethod::MyMethod(string name)
+MyMethod::MyMethod(string name, string value)
 {
 	this->name = name;
+	this->value = value;
 }
 
 MyMethod::~MyMethod()
@@ -23,16 +24,26 @@ void MyMethod::set_name(string name)
 	this->name = name;
 }
 
+string MyMethod::get_value()
+{
+	return value;
+}
+
+void MyMethod::set_value(string value)
+{
+	this->value = value;
+}
+
 void MyMethod::print()
 {
-	cout << "Метод " << name << endl;
+	cout << value << " " << name <<"(){};" << endl;
 }
 
 void MyMethod::add(string name)
 {
 }
 
-void MyMethod::add(string name, int i)
+void MyMethod::add(string name, MyClassMemberType t, string value)
 {
 }
 

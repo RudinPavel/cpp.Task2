@@ -23,6 +23,9 @@ bool MyUtils::check_valid_name(string name)
 		return false;
 	}
 
+	if (!isalpha(name[0])) return false;
+	if (isdigit(name[0])) return false;
+
 	while (name[i])
 	{
 		if (name[i] == ' ')

@@ -12,7 +12,7 @@ public:
 
 	void add(string name) override; // добавление сущности
 
-	virtual void add(string name, int i);
+	virtual void add(string name, MyClassMemberType t, string value);
 
 	void remove(int index) override; // удаление сущности
 
@@ -31,6 +31,10 @@ public:
 	MyNamespace(string name); // конструктор сущности Не может быть virtual
 
 	~MyNamespace() override; // деструктор сущности
+
+	void set_value(string value) override;
+
+	string get_value() override; // получение имени сущности
 private:
 	string name; // поле
 	vector<Element*> elements; // вектор указателей на классы

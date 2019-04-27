@@ -13,7 +13,7 @@ public:
 
 	void add(string name) override; // добавление сущности
 
-	virtual void add(string name, int i);
+	virtual void add(string name, MyClassMemberType t, string value);
 
 	void remove(int index) override; // удаление сущности
 
@@ -32,6 +32,10 @@ public:
 	MyRepository(string name); // конструктор сущности Не может быть virtual
 
 	~MyRepository() override; // деструктор сущности
+
+	string get_value();
+
+	void set_value(string value);
 
 private:
 	string name; // поле

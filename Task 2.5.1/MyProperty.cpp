@@ -3,9 +3,10 @@
 #include <iostream>
 using namespace std;
 
-MyProperty::MyProperty(string name)
+MyProperty::MyProperty(string name, string value)
 {
 	this->name = name;
+	this->value = value;
 }
 
 MyProperty::~MyProperty()
@@ -24,14 +25,24 @@ void MyProperty::set_name(string name)
 
 void MyProperty::print()
 {
-	cout << "Свойство " << name << endl;
+	cout << "get {" << value <<" "<<name << "}; set {"<< value << " " << name << "};" << endl;
+}
+
+void MyProperty::set_value(string value)
+{
+	this->value = value;
+}
+
+string MyProperty::get_value()
+{
+	return value;
 }
 
 void MyProperty::add(string name)
 {
 }
 
-void MyProperty::add(string name, int i)
+void MyProperty::add(string name, MyClassMemberType t, string value)
 {
 }
 

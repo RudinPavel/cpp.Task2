@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="Element.h" />
     <ClInclude Include="MyClass.h" />
+    <ClInclude Include="MyClassMember.h" />
     <ClInclude Include="MyField.h" />
     <ClInclude Include="MyMethod.h" />
     <ClInclude Include="MyNamespace.h" />

@@ -9,12 +9,15 @@ using namespace std;
 
 void MyNamespace::print()
 {
-	cout << "Пространство имён " << name << endl;
+	cout << "namespace " << name << endl;
+	cout << "    ";
 	cout << "{" << endl;
 	for each (Element * e in elements)
 	{
+		cout << "	";
 		e->print();
 	}
+	cout << "    ";
 	cout << "}" << endl;
 	cout << endl;
 }
@@ -26,7 +29,7 @@ void MyNamespace::add(string name)
 	cout << "Успешно добавили класс" << endl;
 }
 
-void MyNamespace::add(string name, int i)
+void MyNamespace::add(string name, MyClassMemberType t, string value)
 {
 }
 
@@ -97,6 +100,15 @@ MyNamespace::~MyNamespace()
 	{
 		delete e;
 	}
+}
+
+void MyNamespace::set_value(string value)
+{
+}
+
+string MyNamespace::get_value()
+{
+	return string();
 }
 
 

@@ -12,25 +12,34 @@ using namespace std;
 
 void MyClass::print()
 {
-	cout << "Класс " << name << endl;
+	cout << "class " << name << endl;
+	cout << "	";
 	cout << "{" << endl;
 	for each (Element * e in elements)
 	{
+		cout << "	 ";
 		e->print();
 	}
+	cout << "	";
 	cout << "}" << endl;
 	cout << endl;
 }
 
-void MyClass::add(string name, int i)
+void MyClass::add(string name, MyClassMemberType t, string value)
 {
 	Element* e;
-	if (i == 1)
-		e = new MyField(name);
-	if (i == 2)
-		e = new MyProperty(name);
-	if (i == 3)
-		e = new MyMethod(name);
+	switch (t) 
+	{
+	case Field:
+		e = new MyField(name, value);
+		break;
+	case Property:
+		e = new MyProperty(name, value);
+		break;
+	case Method:
+		e = new MyMethod(name, value);
+		break;
+	}
 	elements.push_back(e);
 	cout << "Успешно добавили сущность" << endl;
 }
@@ -106,4 +115,13 @@ MyClass::~MyClass()
 	{
 		delete e;
 	}
+}
+
+void MyClass::set_value(string name)
+{
+}
+
+string MyClass::get_value()
+{
+	return string();
 }

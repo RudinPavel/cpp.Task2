@@ -12,7 +12,7 @@ class MyClass : public Element
 public:
 	void print() override; // печать сущности
 
-	void add(string name, int i); // добавление сущности
+	void add(string name, MyClassMemberType t, string value); // добавление сущности
 
 	void add(string name);
 
@@ -33,6 +33,10 @@ public:
 	MyClass(string name); // конструктор сущности Не может быть virtual
 
 	~MyClass() override; // деструктор сущности
+
+	void set_value(string name) override;
+
+	string get_value() override; // получение имени сущности
 
 private:
 	string name; 

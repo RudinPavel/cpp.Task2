@@ -9,10 +9,11 @@ using namespace std;
 
 void MyRepository::print()
 {
-	cout << "Репозиторий " << name << endl;
+	cout << "repository " << name << endl;
 	cout << "{" << endl;
 	for each (Element * e in elements)
 	{
+		cout << "    ";
 		e->print();
 	}
 	cout << "};" << endl;
@@ -27,7 +28,7 @@ void MyRepository::add(string name)
 	cout << endl;
 }
 
-void MyRepository::add(string name, int i)
+void MyRepository::add(string name, MyClassMemberType t, string value)
 {
 }
 
@@ -100,4 +101,13 @@ MyRepository::~MyRepository()
 		delete e;
 	}
 	cout << "Репозиторий удалён" << endl;
+}
+
+string MyRepository::get_value()
+{
+	return string();
+}
+
+void MyRepository::set_value(string value)
+{
 }
